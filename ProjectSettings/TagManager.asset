@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Block
+  - Ball
+  - Wall
+  - Paddle
+  - DeathZone
+  - Bullet
+  - SideWall
+  - Iron
+  - Damm
+  - Meteor
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Wall
+  - Block
+  - Ball
+  - Bullet
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Pla1
+    uniqueID: 3002547283
+    locked: 0
+  - name: Pla2
+    uniqueID: 2080505573
+    locked: 0
+  m_RenderingLayers:
+  - Default
