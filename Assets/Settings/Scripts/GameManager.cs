@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
         }
         
         HighScoreManager.instance.AddScore(currentScore);
-        Invoke(nameof(ReturnToMenu), 8f);
+        Invoke(nameof(ReturnToMenu), 4f);
     }
 
     void ReturnToMenu()

@@ -20,6 +20,8 @@ public class MeteorBall : MonoBehaviour
         rb.linearVelocity = dir * speed;
 
         Invoke(nameof(TransformToNormalBall), lifetime);
+
+        GameManager.instance.activeBalls++;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -61,7 +63,7 @@ public class MeteorBall : MonoBehaviour
         // DeathZone'u görmezden gelir (meteor asla ölmez)
         if (col.CompareTag("DeathZone"))
         {
-
+            GameManager.instance.activeBalls--;
             Destroy(gameObject);
             return;
         }
@@ -70,6 +72,8 @@ public class MeteorBall : MonoBehaviour
 
     void TransformToNormalBall()
     {
+        GameManager.instance.activeBalls--;
+
         Vector3 center = transform.position;
 
         float spawnOffset = 0.25f;

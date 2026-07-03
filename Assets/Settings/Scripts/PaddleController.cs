@@ -5,8 +5,8 @@ public class PaddleController : MonoBehaviour
     public float speed = 10f;
 
     // Yeni: Raketin hareket edeceði sýnýrlar
-    public float minX = -9.75f;
-    public float maxX = 9.75f;
+    public float minX;
+    public float maxX;
 
     public enum PaddleSize { Normal, Big, Small, Gun }
     public PaddleSize currentSize = PaddleSize.Normal;
@@ -60,6 +60,52 @@ public class PaddleController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ApplyScale();
 
+        CalculateBounds();
+    }
+
+    void CalculateBounds()
+    {
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("SideWall");
+
+        if (walls.Length == 0)
+        {
+           
+            return;
+        }
+
+        float? leftWallInnerEdge = null;
+        float? rightWallInnerEdge = null;
+
+        Vector3 paddlePos = transform.position;
+
+        foreach (GameObject wall in walls)
+        {
+            Collider2D col = wall.GetComponent<Collider2D>();
+            if (col == null) continue;
+
+            Bounds b = col.bounds;
+
+            if (b.center.x < paddlePos.x)
+            {
+                // Bu duvar solda -> iç kenarý (sað tarafý) bizim minX'imiz olacak
+                float innerEdge = b.max.x;
+                if (leftWallInnerEdge == null || innerEdge > leftWallInnerEdge)
+                    leftWallInnerEdge = innerEdge;
+            }
+            else
+            {
+                // Bu duvar saðda -> iç kenarý (sol tarafý) bizim maxX'imiz olacak
+                float innerEdge = b.min.x;
+                if (rightWallInnerEdge == null || innerEdge < rightWallInnerEdge)
+                    rightWallInnerEdge = innerEdge;
+            }
+        }
+
+        if (leftWallInnerEdge.HasValue)
+            minX = leftWallInnerEdge.Value;
+
+        if (rightWallInnerEdge.HasValue)
+            maxX = rightWallInnerEdge.Value;
     }
 
     public void ResetSize()
@@ -89,9 +135,15 @@ public class PaddleController : MonoBehaviour
         // 2. Yeni: Pozisyonu Sýnýrlandýrma
         Vector3 currentPosition = transform.position;
 
-        // Mathf.Clamp, bir deðeri minimum ve maksimum deðerler arasýnda tutar.
-        // Raketin mevcut X pozisyonunu, minX ve maxX arasýna zorlar.
-        float clampedX = Mathf.Clamp(currentPosition.x, minX, maxX);
+        float halfWidth = 0f;
+        if (sr != null && sr.sprite != null)
+            halfWidth = sr.bounds.extents.x;  // sprite'ýn gerçek dünya geniþliði
+        else
+            halfWidth = transform.localScale.x * 0.5f;  // fallback
+
+        // Sýnýrlarý yarý geniþliðe göre daralt
+        float clampedX = Mathf.Clamp(currentPosition.x, minX + halfWidth, maxX - halfWidth);
+
 
         // Raketin pozisyonunu güncellenmiþ X deðeriyle ayarla (Y ve Z deðiþmez).
         transform.position = new Vector3(clampedX, currentPosition.y, currentPosition.z);
@@ -105,7 +157,7 @@ public class PaddleController : MonoBehaviour
         {
             fireTimer -= Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.G) || (Input.GetKey(KeyCode.LeftShift) && fireTimer <= 0f))
+            if ((Input.GetKeyDown(KeyCode.G) || (Input.GetKey(KeyCode.LeftShift)) && fireTimer <= 0f))
             {
                 FireGuns();
                 fireTimer = fireRate;
@@ -173,6 +225,13 @@ public class PaddleController : MonoBehaviour
 
     public void EnableTurret(float duration)
     {
+        if (currentSize != PaddleSize.Normal)
+        {
+            currentSize = PaddleSize.Normal;
+            ApplyScale();
+        }
+
+
         isTurret = true;
         GetComponent<SpriteRenderer>().sprite = turretSprite;
 
