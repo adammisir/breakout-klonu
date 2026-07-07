@@ -16,12 +16,21 @@ public class PaddleController : MonoBehaviour
     public Vector3 bigScale = new Vector3(1.9f, 1f, 1f);
     public Vector3 smallScale = new Vector3(0.5f, 1f, 1f);
 
+    [Header("Death Animation")]
+    public GameObject explosionPrefab; // Inspector'dan particle prefabýný ata
+    public float deathAnimDuration = 0.6f;
+    public float spawnAnimDuration = 0.8f;
+
+    private Vector3 spawnPosition; // baþlangýç pozisyonunu kaydeder
+    private bool isDead = false;
+
+    [Header("Turret")]
 
     public bool isTurret = false;
     public float fireRate = 0.25f;
     private float fireTimer = 0f;
 
-    [Header("Turret")]
+    
     public Sprite normalSprite;
     public Sprite turretSprite;
 
@@ -29,7 +38,7 @@ public class PaddleController : MonoBehaviour
     public Transform leftGun;
     public Transform rightGun;
 
-    private Coroutine sizeCoroutine = null;
+    //private Coroutine sizeCoroutine = null;
     private SpriteRenderer sr;
 
 
@@ -58,9 +67,75 @@ public class PaddleController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         // rb = GetComponent<Rigidbody2D>(); yerine rb = GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody2D>();
+        spawnPosition = transform.position;
         ApplyScale();
-
         CalculateBounds();
+    }
+
+    public void OnLoseLife()
+    {
+        if (isDead) return;
+        StartCoroutine(DeathAndRespawnRoutine());
+    }
+
+    IEnumerator DeathAndRespawnRoutine()
+    {
+        isDead = true;
+
+        rb.linearVelocity = Vector2.zero;
+
+        // Topu paddle'a attach et
+        BallController ball = FindAnyObjectByType<BallController>();
+        if (ball != null)
+        {
+            ball.SetAttachedToPaddle(true);
+            ball.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+           // ball.autoLaunchTimer = 0f; // timer'ý sýfýrla
+        }
+
+        // Patlama efekti
+        if (explosionPrefab != null)
+        {
+            int count = 5;
+            float radius = sr.bounds.size.x * 0.3f;
+
+            for (int i = 0; i < count; i++)
+            {
+                float angle = i * (260f / count) * Mathf.Deg2Rad;
+                Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * radius;
+                Instantiate(explosionPrefab, transform.position + offset, Quaternion.identity);
+            }
+        }
+
+        // Ekranýn altýna yavaþça in
+        float bottomY = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 0f)).y - 1f;
+        float startY = transform.position.y;
+        float elapsed = 0f;
+
+        while (elapsed < deathAnimDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / deathAnimDuration;
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(startY, bottomY, t), spawnPosition.z);
+            yield return null;
+        }
+
+        // Ekranýn ortasýna X'i ayarla, Y ekranýn altýnda kalsýn
+        transform.position = new Vector3(0f, bottomY, spawnPosition.z);
+
+        // Yukarý yavaþça çýk
+        elapsed = 0f;
+        while (elapsed < spawnAnimDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / spawnAnimDuration;
+            transform.position = new Vector3(0f, Mathf.Lerp(bottomY, spawnPosition.y, t), spawnPosition.z);
+            yield return null;
+        }
+
+        transform.position = spawnPosition;
+        ResetSize();
+        isDead = false;
     }
 
     void CalculateBounds()

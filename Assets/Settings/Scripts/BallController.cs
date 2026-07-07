@@ -13,8 +13,8 @@ public class BallController : MonoBehaviour
     private bool hasLaunched = false;
 
     public bool launched = false;
-    private float autoLaunchTime = 10f;
-    private float autoLaunchTimer = 0f;  // sayaç (bunu eklemeliyiz)
+    public float autoLaunchTime = 10f;
+    public float autoLaunchTimer = 0f;  // sayaç (bunu eklemeliyiz)
 
     public AudioClip paddleSound;
     public AudioClip blockSound;
@@ -22,14 +22,14 @@ public class BallController : MonoBehaviour
     public AudioClip WallSouns;
 
     private Collider2D lastIronBlock;
-    private int stuckHitCount = 0;
+    
     private float lastIronHitTime = 0f;
 
-    public int stuckHitsToSpawn = 7;
+    
     public float ironHitCooldown = 0.2f;
     public int maxRescueSpawns = 1;
 
-    private int rescueSpawnCount = 0;
+   // private int rescueSpawnCount = 0;
 
     Rigidbody2D rb;
     AudioSource audioSource;
@@ -123,7 +123,7 @@ public class BallController : MonoBehaviour
 
         rb.bodyType = RigidbodyType2D.Dynamic;
 
-        speed = initialSpeed; // 👈 ÖNEMLİ
+        speed = initialSpeed; //  ÖNEMLİ
 
 
         float randomX = Random.Range(-1f, 1f);
@@ -196,24 +196,11 @@ public class BallController : MonoBehaviour
             if (Time.time - lastIronHitTime < ironHitCooldown)
                 return;
 
-            if (collision.collider == lastIronBlock)
-            {
-                stuckHitCount++;
-            }
-            else
-            {
-                lastIronBlock = collision.collider;
-                stuckHitCount = 1;
-            }
+         
 
             lastIronHitTime = Time.time;
 
-            if (stuckHitCount >= stuckHitsToSpawn && rescueSpawnCount < maxRescueSpawns)
-            {
-                SpawnRescueBalls();
-                rescueSpawnCount++;
-                stuckHitCount = 0;
-            }
+           
         }
 
         if (collision.gameObject.CompareTag("Wall") || (collision.gameObject.CompareTag("SideWall")))
@@ -250,21 +237,21 @@ public class BallController : MonoBehaviour
             
         }
 
-        void SpawnRescueBalls()
-        {
-            Vector2[] rescueDirs =
-            {
-                new Vector2(-1f, 1f).normalized,
-                new Vector2(1f, 1f).normalized
-            };
+        //void SpawnRescueBalls()
+        //{
+        //    Vector2[] rescueDirs =
+        //    {
+        //        new Vector2(-1f, 1f).normalized,
+        //        new Vector2(1f, 1f).normalized
+        //    };
 
-            foreach (var dir in rescueDirs)
-            {
-                GameObject b = Instantiate(smallBallPrefab, transform.position, Quaternion.identity);
-                BallController bc = b.GetComponent<BallController>();
-                bc.SetDirectionAndSpeed(dir, speed);
-            }
-        }
+        //    foreach (var dir in rescueDirs)
+        //    {
+        //        GameObject b = Instantiate(smallBallPrefab, transform.position, Quaternion.identity);
+        //        BallController bc = b.GetComponent<BallController>();
+        //        bc.SetDirectionAndSpeed(dir, speed);
+        //    }
+        //}
 
         void IncreaseSpeed()
         {
@@ -344,12 +331,10 @@ public class BallController : MonoBehaviour
     // DeathZone için trigger örneği:
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("DeathZone"))
+        if (col.CompareTag("DeathZone") && !attachedToPaddle)
         {
             Kill();
         }
     }
-
-
 
 }

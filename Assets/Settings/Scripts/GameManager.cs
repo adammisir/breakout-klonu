@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
         activeBalls = 0;
     }
 
-    void LoseLife()
+    public void LoseLife()
     {
         currentLives--;
         
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
             var pc = paddle.GetComponent<PaddleController>();
             if (pc != null) pc.ResetSize();
         }
-        
+        FindAnyObjectByType<PaddleController>().OnLoseLife();
         UpdateUI();
 
         // can bitti mi?
