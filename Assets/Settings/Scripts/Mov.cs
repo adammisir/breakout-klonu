@@ -16,14 +16,16 @@ public class Mov : MonoBehaviour
     [SerializeField] private float checkDistance = 0.1f;
 
     private Rigidbody2D rb;
-    private BoxCollider2D col;
+    private Collider2D generalCollider;
 
     private int moveDirection = 0;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<BoxCollider2D>();
+
+        // Objede Box veya Polygon ne varsa onu genel collider olarak alıyoruz
+        generalCollider = GetComponent<Collider2D>();
 
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.constraints =
@@ -66,7 +68,7 @@ public class Mov : MonoBehaviour
             return;
         }
 
-        // 👇 İKİ TARAF DA BOŞSA
+        //  İKİ TARAF DA BOŞSA
         // Daha önce yön yoksa → varsayılan yönü ata
         if (moveDirection == 0)
         {
@@ -76,20 +78,26 @@ public class Mov : MonoBehaviour
 
     bool IsBlocked(Vector2 dir)
     {
-        Vector2 origin = rb.position;
-        float halfWidth = col.bounds.extents.x;
+        if (generalCollider == null) generalCollider = GetComponent<Collider2D>();
+        if (generalCollider == null) return false;
 
-        Vector2 checkPos = origin + dir * (halfWidth + checkDistance);
-        Vector2 boxSize = new Vector2(0.05f, col.bounds.size.y * 0.9f);
+        // L bloğun tüm sınırlarını kaplayan kutunun boyutu
+        Vector2 size = generalCollider.bounds.size;
+        size.y *= 0.9f; // Üst ve alta sürtünmeyi engellemek için
 
-        Collider2D hit = Physics2D.OverlapBox(
-            checkPos,
-            boxSize,
+        // CRITICAL FIX: Aramayı rb.position yerine doğrudan collider merkezinden başlatıyoruz
+        Vector2 colliderCenter = generalCollider.bounds.center;
+
+        RaycastHit2D hit = Physics2D.BoxCast(
+            colliderCenter,
+            size,
             0f,
+            dir,
+            checkDistance,
             blockLayer | wallLayer
         );
 
-        return hit != null && hit.gameObject != gameObject;
+        return hit.collider != null && hit.collider.gameObject != gameObject;
     }
 
     void Move()
@@ -104,26 +112,23 @@ public class Mov : MonoBehaviour
         rb.MovePosition(nextPos);
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
-        if (col == null) col = GetComponent<BoxCollider2D>();
-        if (col == null) return;
+        if (generalCollider == null) generalCollider = GetComponent<Collider2D>();
+        if (generalCollider == null) return;
 
         Gizmos.color = Color.red;
-        Vector2 size = new Vector2(0.05f, col.bounds.size.y * 0.9f);
+        Vector2 size = generalCollider.bounds.size;
+        size.y *= 0.9f;
 
-        Gizmos.DrawWireCube(
-            (Vector2)transform.position +
-            Vector2.left * (col.bounds.extents.x + checkDistance),
-            size
-        );
+        Vector2 center = generalCollider.bounds.center;
 
-        Gizmos.DrawWireCube(
-            (Vector2)transform.position +
-            Vector2.right * (col.bounds.extents.x + checkDistance),
-            size
-        );
+        // Sol kontrol kutusu çizimi (Tam olması gereken yerde görünecek)
+        Gizmos.DrawWireCube(center + Vector2.left * checkDistance, size);
+
+        // Sağ kontrol kutusu çizimi
+        Gizmos.DrawWireCube(center + Vector2.right * checkDistance, size);
     }
-#endif
+    #endif
 }

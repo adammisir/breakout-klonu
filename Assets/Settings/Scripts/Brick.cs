@@ -20,11 +20,51 @@ public class Block : MonoBehaviour
 
     [Header("Explosion")]
     public GameObject explosionPrefab;
+    public Sprite IndestructibleSprite;
     private SpriteRenderer sr;
+    private bool isFlashing = false;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+
+        if (isIndestructible && IndestructibleSprite != null)
+        {
+            // 1. ADIM: Eski sprite'ýn o seviyedeki GERÇEK dünya boyutunu (Renderer Bounds) kaydet
+            // Bu sayede o seviyede bloðu ne kadar esnettiysen esnet, tam o kutu boyutunu cebimize koyuyoruz.
+            Vector3 eskiGercekBoyut = sr.bounds.size;
+
+            // 2. ADIM: Yeni kýrýlamaz sprite'ýný ata
+            sr.sprite = IndestructibleSprite;
+
+            // 3. ADIM: Scale deðerini 1,1,1 yapýp sýfýrlýyoruz ki temiz bir hesaplama yapalým
+            transform.localScale = Vector3.one;
+
+            // 4. ADIM: Yeni sprite'ýn ham boyutunu alýp, eski gerçek boyuta ulaþmak için gereken yeni scale'i hesapla
+            Vector3 yeniSpriteHamBoyutu = sr.bounds.size;
+
+            transform.localScale = new Vector3(
+                eskiGercekBoyut.x / yeniSpriteHamBoyutu.x,
+                eskiGercekBoyut.y / yeniSpriteHamBoyutu.y,
+                1f
+            );
+            BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+            if (boxCollider != null)
+            {
+                // Bu iki satýr collider'ý tamamen silip yeniden eklemiþ gibi 
+                // yeni sprite'ýn sýnýrlarýna (bounds) otomatik olarak sýfýrlar ve eþitler.
+                boxCollider.size = sr.sprite.bounds.size;
+                boxCollider.offset = sr.sprite.bounds.center;
+            }
+            PolygonCollider2D polygonCollider = GetComponent<PolygonCollider2D>();
+            if (polygonCollider != null)
+            {
+                // Polygon collider'ý yeni L þeklindeki kýrýlamaz sprite'ýn sýnýrlarýna göre otomatik yeniden çizer
+                Destroy(polygonCollider);
+
+                gameObject.AddComponent<PolygonCollider2D>();
+            }
+        }
     }
 
     // Eðer collider'lar trigger ise burasý çalýþýr
@@ -61,6 +101,9 @@ public class Block : MonoBehaviour
 
     IEnumerator ParlamaEfekti()
     {
+        if (isFlashing) yield break;
+
+        isFlashing = true;
         // Bloðun senin panelde ayarladýðýn güncel rengini hafýzaya alýyoruz
         Color eskiRenk = sr.color;
 
@@ -76,6 +119,7 @@ public class Block : MonoBehaviour
         {
             sr.color = eskiRenk;
         }
+        isFlashing = false;
     }
     IEnumerator KirilmaVeEfektSureci()
     {

@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8220422965399949152, guid: a78accbdd11d9c0459c27776b8c64bd1, type: 3}
+  m_Sprite: {fileID: 7130258444457573802, guid: aa0a2601bd19402428e7c52ef0b11b2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,7 +132,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.05, y: 0.94}
+    oldSize: {x: 0.5946154, y: 0.5315385}
     newSize: {x: 1.05, y: 0.94}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitsToBreak: 2
-  damagedSprite: {fileID: 3685002520340290964, guid: e31517cb9ee1a124e9162aa12cb8f559, type: 3}
+  damagedSprite: {fileID: 8220422965399949152, guid: a78accbdd11d9c0459c27776b8c64bd1, type: 3}
   meteorHitCooldown: 0.15
   powerUpF: {fileID: 2596423461672533984, guid: 7519b7672165794459fddfb17ee7a6ae, type: 3}
   powerUpB: {fileID: 2596423461672533984, guid: 86421864a72941841bf8c9ed514c21aa, type: 3}

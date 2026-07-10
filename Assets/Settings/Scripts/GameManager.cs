@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("Tüm seviyeler bitti.");
             HighScoreManager.instance.AddScore(currentScore);
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
     }
 

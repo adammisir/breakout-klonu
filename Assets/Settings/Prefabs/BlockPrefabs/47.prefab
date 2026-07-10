@@ -172,6 +172,7 @@ MonoBehaviour:
   powerUpM: {fileID: 2596423461672533984, guid: a3fab2e74807b3d4ca30dec63f0f005e, type: 3}
   dropChance: 0.2
   explosionPrefab: {fileID: 486442682533636230, guid: 77333e3fb0b81794ca7c5f17ec6c18c0, type: 3}
+  IndestructibleSprite: {fileID: 7785480676998306831, guid: 9d202d01eae8426429a8ae59579e612e, type: 3}
 --- !u!114 &5002671498523160966
 MonoBehaviour:
   m_ObjectHideFlags: 0
