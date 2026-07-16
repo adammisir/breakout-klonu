@@ -18,7 +18,7 @@ public class PaddleController : MonoBehaviour
 
     [Header("Death Animation")]
     public GameObject explosionPrefab; // Inspector'dan particle prefabýný ata
-    public float deathAnimDuration = 0.6f;
+    public float deathAnimDuration = 0.5f;
     public float spawnAnimDuration = 0.8f;
 
     private Vector3 spawnPosition; // baþlangýç pozisyonunu kaydeder
@@ -77,7 +77,21 @@ public class PaddleController : MonoBehaviour
         if (isDead) return;
         StartCoroutine(DeathAndRespawnRoutine());
     }
+    public void ResetSize()
+    {
+        currentSize = PaddleSize.Normal;   // asýl sistemde normal moda al
+        isBig = false;
+        isSmall = false;
 
+        ApplyScale(); // doðru scale’i uygular
+
+        // turret varsa kapat
+        if (isTurret)
+        {
+            isTurret = false;
+            GetComponent<SpriteRenderer>().sprite = normalSprite;
+        }
+    }
     IEnumerator DeathAndRespawnRoutine()
     {
         isDead = true;
@@ -94,15 +108,34 @@ public class PaddleController : MonoBehaviour
         }
 
         // Patlama efekti
+        // Patlama efekti
+        // Patlama efekti
         if (explosionPrefab != null)
         {
-            int count = 5;
-            float radius = sr.bounds.size.x * 0.3f;
+            float paddleWidth = sr.bounds.size.x;
+            float halfWidth = paddleWidth / 2f;
+
+            // Geniþliðe göre patlama sayýsýný belirliyoruz (Büyükte daha çok, küçükte daha az)
+            int count = Mathf.RoundToInt(paddleWidth * 5f);
+            count = Mathf.Clamp(count, 3, 10); // En az 3, en fazla 10 patlama
 
             for (int i = 0; i < count; i++)
             {
-                float angle = i * (260f / count) * Mathf.Deg2Rad;
-                Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * radius;
+                // Patlamalarý soldan saða eþit þekilde daðýtýyoruz (Linear Interpolation)
+                // t deðeri 0 (en sol) ile 1 (en sað) arasýnda deðiþir
+                float t = (count > 1) ? (float)i / (count - 1) : 0.5f;
+
+                // Sol uçtan sað uca X noktasýný hesapla
+                float xOffset = Mathf.Lerp(-halfWidth, halfWidth, t);
+
+                // Kusursuz robotik bir çizgi gibi durmasýn diye çok hafif doðal bir sapma (jitter) ekliyoruz
+                // Ama bu sapma raketin dýþýna taþmayacak kadar küçük (X için max 0.05, Y için max 0.1)
+                float randomX = Random.Range(-0.05f, 0.05f);
+                float randomY = Random.Range(-0.08f, 0.08f);
+
+                Vector3 offset = new Vector3(xOffset + randomX, randomY, 0f);
+
+                // Efekti raketin tam üzerine yerleþtiriyoruz
                 Instantiate(explosionPrefab, transform.position + offset, Quaternion.identity);
             }
         }
@@ -120,6 +153,7 @@ public class PaddleController : MonoBehaviour
             yield return null;
         }
 
+        ResetSize();
         // Ekranýn ortasýna X'i ayarla, Y ekranýn altýnda kalsýn
         transform.position = new Vector3(0f, bottomY, spawnPosition.z);
 
@@ -133,9 +167,10 @@ public class PaddleController : MonoBehaviour
             yield return null;
         }
 
+        
         transform.position = spawnPosition;
-        ResetSize();
         isDead = false;
+       
     }
 
     void CalculateBounds()
@@ -183,24 +218,16 @@ public class PaddleController : MonoBehaviour
             maxX = rightWallInnerEdge.Value;
     }
 
-    public void ResetSize()
-    {
-        currentSize = PaddleSize.Normal;   // asýl sistemde normal moda al
-        isBig = false;
-        isSmall = false;
-
-        ApplyScale(); // doðru scale’i uygular
-
-        // turret varsa kapat
-        if (isTurret)
-        {
-            isTurret = false;
-            GetComponent<SpriteRenderer>().sprite = normalSprite;
-        }
-    }
+    
 
     void FixedUpdate()
     {
+        if (isDead)
+    {
+        rb.linearVelocity = Vector2.zero;
+        return;
+    }
+
         float moveInput = Input.GetAxis("Horizontal");
 
         // 1. Hýzý ayarla (Mevcut hareket kodumuz)

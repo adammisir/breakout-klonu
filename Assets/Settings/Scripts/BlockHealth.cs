@@ -10,18 +10,19 @@ public class BlockHealth : MonoBehaviour
     private float lastMeteorHitTime = -10f;
     public float meteorHitCooldown = 0.15f;
 
-
     [Header("Power Up Settings")]
-    public GameObject powerUpF;
-    public GameObject powerUpB;
-    public GameObject powerUpS;
-    public GameObject powerUpG;
-    public GameObject powerUpT;
-    public GameObject powerUpH;
-    public GameObject powerUpM;
-
     [Range(0f, 1f)]
-    public float dropChance = 0.2f; // %20 ihtimalle powerup düşer
+    public float globalDropChance = 0.3f; // %30 ihtimalle powerUp düşer
+    public PowerUpEntry[] powerUps;
+
+    [System.Serializable]
+    public class PowerUpEntry
+    {
+        public GameObject prefab;
+        [Range(0f, 10f)]
+        public float weight; // ağırlık, yüksek olursa daha sık seçilir
+    }
+
 
     [Header("Explosion")]
     public GameObject explosionPrefab;
@@ -143,16 +144,33 @@ public class BlockHealth : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         Destroy(gameObject); 
     }
+
     void DropPowerUp()
     {
-        if (Random.value > dropChance)
-            return;
+        // Önce genel şans kontrolü
+        if (Random.value > globalDropChance) return;
 
-        GameObject[] list = { powerUpF, powerUpB, powerUpS, powerUpG, powerUpT, powerUpH, powerUpM };
-        GameObject chosen = list[Random.Range(0, list.Length)];
+        // Toplam ağırlığı hesapla
+        float totalWeight = 0f;
+        foreach (var entry in powerUps)
+            if (entry.prefab != null)
+                totalWeight += entry.weight;
 
-        Instantiate(chosen, transform.position, Quaternion.identity);
+        if (totalWeight == 0f) return;
+
+        // Ağırlığa göre rastgele seç
+        float roll = Random.value * totalWeight;
+        float cumulative = 0f;
+
+        foreach (var entry in powerUps)
+        {
+            if (entry.prefab == null) continue;
+            cumulative += entry.weight;
+            if (roll <= cumulative)
+            {
+                Instantiate(entry.prefab, transform.position, Quaternion.identity);
+                return;
+            }
+        }
     }
-
-
 }

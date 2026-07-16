@@ -16,10 +16,15 @@ public class BallController : MonoBehaviour
     public float autoLaunchTime = 10f;
     public float autoLaunchTimer = 0f;  // sayaç (bunu eklemeliyiz)
 
+    private float lastSpawnTime = -10f;
+    public float spawnCooldown = 2f; // 2 saniyede bir spawn olabilir
+
     public AudioClip paddleSound;
     public AudioClip blockSound;
     public AudioClip ironBlockSound;
     public AudioClip WallSouns;
+
+    private static bool isMuted = false;
 
     private Collider2D lastIronBlock;
     
@@ -45,6 +50,18 @@ public class BallController : MonoBehaviour
     private int blockHitCount = 0;
     public int hitsToSpawnSmall = 7;
 
+    [Header("Rescue")]
+    public float stuckCheckInterval = 0.5f; // her 0.5 saniyede kontrol et
+    public float stuckThreshold = 0.7f; // bu kadar hareket etmediyse sıkışmış say
+
+    private Vector2 lastPosition;
+    private float stuckTimer;
+
+    private bool touchingWall = false;
+    private bool touchingBlock = false;
+
+    private float lastTeleportTime = 0f;
+    private float teleportCooldown = 0.2f;
 
     void Awake()
     {
@@ -89,7 +106,8 @@ public class BallController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = rb.linearVelocity.normalized * initialSpeed;
 
-        
+        lastPosition = transform.position;
+        stuckTimer = 0f;
     }
 
     void Update()
@@ -111,7 +129,10 @@ public class BallController : MonoBehaviour
             {
                 Launch();
             }
-        }
+        } 
+            CheckIfStuck();
+        if (Input.GetKeyDown(KeyCode.M))
+            ToggleMute();
     }
 
     void Launch()
@@ -142,7 +163,43 @@ public class BallController : MonoBehaviour
         }
     }
 
+    void CheckIfStuck()
+    {
+        if (attachedToPaddle) return;
 
+        stuckTimer += Time.deltaTime;
+
+        if (stuckTimer >= stuckCheckInterval)
+        {
+            float movedDistance = Vector2.Distance(rb.position, lastPosition);
+
+            // Hem duvara hem bloğa yapışıksa VEYA hiç hareket etmediyse sıkışmış say
+            bool isStuck = (touchingWall && touchingBlock) || movedDistance < stuckThreshold;
+
+            if (isStuck)
+            {
+                if (paddle != null)
+                    transform.position = paddle.position + new Vector3(Random.Range(-0.5f, 0.5f), paddleOffset, 0f);
+
+                // Yukarı yönlü rastgele açıyla fırlat
+                float randomX = Random.Range(-1f, 1f);
+                direction = new Vector2(randomX, 1f).normalized;
+                speed = initialSpeed; // hızı sıfırla, sıkışma sırasında artmış olabilir
+            }
+
+            lastPosition = rb.position;
+            stuckTimer = 0f;
+        }
+    }
+    void ToggleMute()
+    {
+        isMuted = !isMuted;
+        AudioListener.volume = isMuted ? 0f : 1f;
+
+        MuteButton muteButton = FindAnyObjectByType<MuteButton>();
+        if (muteButton != null)
+            muteButton.UpdateSprite();
+    }
     void FixedUpdate()
     {
         if (!attachedToPaddle)
@@ -203,10 +260,56 @@ public class BallController : MonoBehaviour
            
         }
 
-        if (collision.gameObject.CompareTag("Wall") || (collision.gameObject.CompareTag("SideWall")))
+        if (collision.gameObject.CompareTag("Wall")) 
         {
             audioSource.PlayOneShot(WallSouns);
 
+            IncreaseSpeed();
+        }
+
+        if (collision.gameObject.CompareTag("SideWall"))
+        {
+            if (PortalWall.isActive)
+            {
+                // 1. COOLDOWN KONTROLÜ: Eğer çok yeni ışınlandıysa işlemi pas geç
+                if (Time.time - lastTeleportTime < teleportCooldown) return;
+
+                // 2. DOĞRU DUVAR TESPİTİ: Çarptığımız objenin isminde "Left" geçiyor mu veya pozisyonu solda mı?
+                // PortalWall scriptindeki 'isLeftWall' değişkenini doğrudan kullanıyoruz.
+                PortalWall hitWall = collision.gameObject.GetComponent<PortalWall>();
+                if (hitWall == null) return;
+
+                float newX;
+
+                // Eğer sol duvara çarptıysak -> Sağ duvara ışınla
+                if (hitWall.isLeftWall && PortalWall.rightWall != null)
+                {
+                    Collider2D rightCol = PortalWall.rightWall.GetComponent<Collider2D>();
+                    // Sağ duvarın sol sınırından sola doğru (içeriye) ofset veriyoruz
+                    newX = rightCol.bounds.min.x - 0.5f;
+                }
+                // Eğer sağ duvara çarptıysak -> Sol duvara ışınla
+                else if (!hitWall.isLeftWall && PortalWall.leftWall != null)
+                {
+                    Collider2D leftCol = PortalWall.leftWall.GetComponent<Collider2D>();
+                    // Sol duvarın sağ sınırından sağa doğru (içeriye) ofset veriyoruz
+                    newX = leftCol.bounds.max.x + 0.5f;
+                }
+                else
+                {
+                    return;
+                }
+
+                // Işınlanma zamanını güncelle
+                lastTeleportTime = Time.time;
+
+                // Topu yeni pozisyona ışınla
+                transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+                return;
+            }
+
+            // Portal aktif değilse normal sekme ve hızlanma
+            audioSource.PlayOneShot(WallSouns);
             IncreaseSpeed();
         }
 
@@ -267,6 +370,25 @@ public class BallController : MonoBehaviour
 
     }
 
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("SideWall") || collision.gameObject.CompareTag("Wall"))
+            touchingWall = true;
+
+        if (collision.gameObject.CompareTag("Iron"))
+            touchingBlock = true;
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("SideWall") || collision.gameObject.CompareTag("Wall"))
+            touchingWall = false;
+
+        if (collision.gameObject.CompareTag("Iron"))
+            touchingBlock = false;
+    }
+
     void FixDirection()
     {
         float minY = 0.35f; // daha güçlü sınır
@@ -281,6 +403,9 @@ public class BallController : MonoBehaviour
 
     void SpawnSmallBall()
     {
+        if (Time.time - lastSpawnTime < spawnCooldown) return; // cooldown kontrolü
+        lastSpawnTime = Time.time;
+
         if (smallBallPrefab == null)
         {
             

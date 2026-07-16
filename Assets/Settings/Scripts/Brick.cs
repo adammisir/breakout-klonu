@@ -59,10 +59,18 @@ public class Block : MonoBehaviour
             PolygonCollider2D polygonCollider = GetComponent<PolygonCollider2D>();
             if (polygonCollider != null)
             {
-                // Polygon collider'ý yeni L þeklindeki kýrýlamaz sprite'ýn sýnýrlarýna göre otomatik yeniden çizer
-                Destroy(polygonCollider);
-
-                gameObject.AddComponent<PolygonCollider2D>();
+                // Sprite'dan fizik þeklini uygula
+                SpriteRenderer sr = GetComponent<SpriteRenderer>();
+                if (sr != null && sr.sprite != null)
+                {
+                    polygonCollider.pathCount = sr.sprite.GetPhysicsShapeCount();
+                    for (int i = 0; i < polygonCollider.pathCount; i++)
+                    {
+                        var path = new System.Collections.Generic.List<Vector2>();
+                        sr.sprite.GetPhysicsShape(i, path);
+                        polygonCollider.SetPath(i, path);
+                    }
+                }
             }
         }
     }

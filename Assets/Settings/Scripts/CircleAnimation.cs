@@ -27,15 +27,15 @@ public class CircleAnimation : MonoBehaviour
     {
         // 1. Aşama: İlk başta tam daire olarak başla
         spriteRenderer.sprite = tamDaireSprite;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.07f);
 
         // 2. Aşama: Ortası yok olan sprite'a geç
         spriteRenderer.sprite = ortasiYokSprite;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.07f);
 
         // 3. Aşama: Altı yok olan sprite'a geç
         spriteRenderer.sprite = altiYokSprite;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.07f);
 
         // 4. Aşama: Kendi etrafında Z ekseninde dönme
         float gecenSure = 0f;

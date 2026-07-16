@@ -133,13 +133,15 @@ public class GameManager : MonoBehaviour
     public void LoseLife()
     {
         currentLives--;
-        
-        if (paddle != null)
+
+        // GameManager sadece animasyonu başlatsın, 
+        // boyut sıfırlama işini raket kendi içinde halledecek!
+        var pc = FindAnyObjectByType<PaddleController>();
+        if (pc != null)
         {
-            var pc = paddle.GetComponent<PaddleController>();
-            if (pc != null) pc.ResetSize();
+            pc.OnLoseLife();
         }
-        FindAnyObjectByType<PaddleController>().OnLoseLife();
+
         UpdateUI();
 
         // can bitti mi?
@@ -155,7 +157,7 @@ public class GameManager : MonoBehaviour
     // ---------------------- BALL SPAWN ----------------------
     void SpawnBallIfNone()
     {
-        var existingBalls = Object.FindObjectsByType<BallController>(FindObjectsSortMode.None);
+        var existingBalls = Object.FindObjectsByType<BallController>();
 
         if (existingBalls.Length == 0) SpawnNewBallOnPaddle();
     }

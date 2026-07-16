@@ -78,14 +78,39 @@ public class Mov : MonoBehaviour
 
     bool IsBlocked(Vector2 dir)
     {
-        if (generalCollider == null) generalCollider = GetComponent<Collider2D>();
-        if (generalCollider == null) return false;
+        if (generalCollider == null)
+            generalCollider = GetComponent<Collider2D>();
 
-        // L bloğun tüm sınırlarını kaplayan kutunun boyutu
+        if (generalCollider == null)
+            return false;
+
+        // L blokları (PolygonCollider2D)
+        if (generalCollider is PolygonCollider2D)
+        {
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.SetLayerMask(blockLayer | wallLayer);
+            filter.useTriggers = false;
+
+            RaycastHit2D[] results = new RaycastHit2D[5];
+
+            int hitCount = generalCollider.Cast(dir, filter, results, checkDistance);
+
+            for (int i = 0; i < hitCount; i++)
+            {
+                if (results[i].collider != null &&
+                    results[i].collider.gameObject != gameObject)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // Normal bloklar (BoxCollider2D)
         Vector2 size = generalCollider.bounds.size;
-        size.y *= 0.9f; // Üst ve alta sürtünmeyi engellemek için
+        size.y *= 0.9f;
 
-        // CRITICAL FIX: Aramayı rb.position yerine doğrudan collider merkezinden başlatıyoruz
         Vector2 colliderCenter = generalCollider.bounds.center;
 
         RaycastHit2D hit = Physics2D.BoxCast(

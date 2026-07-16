@@ -59,6 +59,11 @@ public class PowerUp : MonoBehaviour
                 GameManager.instance?.AddScore(100);
                 SpawnMeteorAtPaddle(paddleObj.transform);
             }
+            else if (type == 'P')
+            {
+                GameManager.instance?.AddScore(100);
+                PortalWall.Activate();
+            }
 
             Destroy(gameObject);
         }
