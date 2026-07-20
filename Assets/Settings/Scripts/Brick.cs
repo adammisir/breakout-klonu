@@ -7,29 +7,36 @@ public class Block : MonoBehaviour
     public bool isIndestructible = false;
 
     [Header("Power Up Settings")]
-    public GameObject powerUpF;
-    public GameObject powerUpB;
-    public GameObject powerUpS;
-    public GameObject powerUpG;
-    public GameObject powerUpT;
-    public GameObject powerUpH;
-    public GameObject powerUpM;
-
     [Range(0f, 1f)]
-    public float dropChance = 0.2f; // %20 ihtimalle powerup düþer
+    public float globalDropChance = 0.3f; // %30 ihtimalle powerUp düþer
+    public PowerUpEntry[] powerUps;
+
+
+    [System.Serializable]
+    public class PowerUpEntry
+    {
+        public GameObject prefab;
+        [Range(0f, 10f)]
+        public float weight; // aðýrlýk, yüksek olursa daha sýk seçilir
+    }
 
     [Header("Explosion")]
     public GameObject explosionPrefab;
     public Sprite IndestructibleSprite;
     private SpriteRenderer sr;
     private bool isFlashing = false;
+    private bool isDestroyed = false;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        GameManager.instance?.RegisterBlock();
+        
+
 
         if (isIndestructible && IndestructibleSprite != null)
         {
+            GameManager.instance.blockCount--;
             // 1. ADIM: Eski sprite'ýn o seviyedeki GERÇEK dünya boyutunu (Renderer Bounds) kaydet
             // Bu sayede o seviyede bloðu ne kadar esnettiysen esnet, tam o kutu boyutunu cebimize koyuyoruz.
             Vector3 eskiGercekBoyut = sr.bounds.size;
@@ -90,6 +97,7 @@ public class Block : MonoBehaviour
 
     void HandleHit(GameObject hitter)
     {
+        if (isDestroyed) return;
         // Sadece Ball veya Bullet ile tepki ver
         if (!hitter.CompareTag("Ball") && !hitter.CompareTag("Bullet") && !hitter.CompareTag("Meteor"))
             return;
@@ -105,6 +113,7 @@ public class Block : MonoBehaviour
         StartCoroutine(KirilmaVeEfektSureci());
 
         DropPowerUp();
+        isDestroyed = true;
     }
 
     IEnumerator ParlamaEfekti()
@@ -172,17 +181,36 @@ public class Block : MonoBehaviour
 
         // 5. AÞAMA: Patlama efektinin tamamen bitmesi için kalan süreyi bekle ve objeyi yok et
         yield return new WaitForSeconds(0.15f);
+        GameManager.instance?.CheckLevelComplete();
         Destroy(gameObject);
     }
 
     void DropPowerUp()
     {
-        if (Random.value > dropChance)
-            return;
+        // Önce genel þans kontrolü
+        if (Random.value > globalDropChance) return;
 
-        GameObject[] list = { powerUpF, powerUpB, powerUpS, powerUpG, powerUpT, powerUpH, powerUpM };
-        GameObject chosen = list[Random.Range(0, list.Length)];
+        // Toplam aðýrlýðý hesapla
+        float totalWeight = 0f;
+        foreach (var entry in powerUps)
+            if (entry.prefab != null)
+                totalWeight += entry.weight;
 
-        Instantiate(chosen, transform.position, Quaternion.identity);
+        if (totalWeight == 0f) return;
+
+        // Aðýrlýða göre rastgele seç
+        float roll = Random.value * totalWeight;
+        float cumulative = 0f;
+
+        foreach (var entry in powerUps)
+        {
+            if (entry.prefab == null) continue;
+            cumulative += entry.weight;
+            if (roll <= cumulative)
+            {
+                Instantiate(entry.prefab, transform.position, Quaternion.identity);
+                return;
+            }
+        }
     }
 }

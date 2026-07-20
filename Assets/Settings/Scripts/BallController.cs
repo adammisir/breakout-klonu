@@ -52,7 +52,7 @@ public class BallController : MonoBehaviour
 
     [Header("Rescue")]
     public float stuckCheckInterval = 0.5f; // her 0.5 saniyede kontrol et
-    public float stuckThreshold = 0.7f; // bu kadar hareket etmediyse sıkışmış say
+    public float stuckThreshold = 0.5f; // bu kadar hareket etmediyse sıkışmış say
 
     private Vector2 lastPosition;
     private float stuckTimer;
@@ -104,7 +104,7 @@ public class BallController : MonoBehaviour
 
 
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = rb.linearVelocity.normalized * initialSpeed;
+        //rb.linearVelocity = rb.linearVelocity.normalized * initialSpeed;
 
         lastPosition = transform.position;
         stuckTimer = 0f;
@@ -172,19 +172,25 @@ public class BallController : MonoBehaviour
         if (stuckTimer >= stuckCheckInterval)
         {
             float movedDistance = Vector2.Distance(rb.position, lastPosition);
-
-            // Hem duvara hem bloğa yapışıksa VEYA hiç hareket etmediyse sıkışmış say
             bool isStuck = (touchingWall && touchingBlock) || movedDistance < stuckThreshold;
 
-            if (isStuck)
+            // Sınır dışına çıktı mı?
+            bool isOutOfBounds = false;
+            if (PortalWall.leftWall != null && PortalWall.rightWall != null)
+            {
+                float leftX = PortalWall.leftWall.GetComponent<Collider2D>().bounds.max.x;
+                float rightX = PortalWall.rightWall.GetComponent<Collider2D>().bounds.min.x;
+                isOutOfBounds = transform.position.x < leftX || transform.position.x > rightX;
+            }
+
+            if (isStuck || isOutOfBounds)
             {
                 if (paddle != null)
                     transform.position = paddle.position + new Vector3(Random.Range(-0.5f, 0.5f), paddleOffset, 0f);
 
-                // Yukarı yönlü rastgele açıyla fırlat
                 float randomX = Random.Range(-1f, 1f);
                 direction = new Vector2(randomX, 1f).normalized;
-                speed = initialSpeed; // hızı sıfırla, sıkışma sırasında artmış olabilir
+                speed = initialSpeed;
             }
 
             lastPosition = rb.position;
@@ -440,9 +446,22 @@ public class BallController : MonoBehaviour
         attachedToPaddle = false;
         hasLaunched = true;
         rb.bodyType = RigidbodyType2D.Dynamic;
+
+        rb.linearVelocity = direction * speed;
+      
     }
 
+    public void SplitBall()
+    {
+        if (attachedToPaddle) return;
 
+        Vector2 oppositeDir = -rb.linearVelocity.normalized;
+        Vector3 spawnPos = transform.position + (Vector3)oppositeDir * 0.3f;
+
+        GameObject newBall = Instantiate(gameObject, spawnPos, Quaternion.identity);
+        BallController newBc = newBall.GetComponent<BallController>();
+        newBc.SetDirectionAndSpeed(oppositeDir, speed);
+    }
 
     // Top ölüm yönetimi (DeathZone tetiklediğinde çağır)
     public void Kill()

@@ -6,7 +6,7 @@ public class BlockHealth : MonoBehaviour
     public int hitsToBreak = 2;                 // bu blogun kac vurusta kırılacagı
     public Sprite damagedSprite;                // 1. vurustan sonra degisecek sprite
     private SpriteRenderer sr;
-
+    private bool isDestroyed = false;
     private float lastMeteorHitTime = -10f;
     public float meteorHitCooldown = 0.15f;
 
@@ -31,6 +31,7 @@ public class BlockHealth : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        GameManager.instance?.RegisterBlock();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -46,6 +47,7 @@ public class BlockHealth : MonoBehaviour
 
     void HandleHit(GameObject hitter)
     {
+        if (isDestroyed) return;
         // Sadece Ball ve Bullet çarptığında işlem yap
         if ( !hitter.CompareTag("Ball") && !hitter.CompareTag("Bullet") && !hitter.CompareTag("Meteor"))
     
@@ -73,9 +75,10 @@ public class BlockHealth : MonoBehaviour
         // kırılma anı
         if (hitsToBreak <= 0)
         {
-
+            isDestroyed = true;
             StartCoroutine(KirilmaVeEfektSureci());
             DropPowerUp();
+            GameManager.instance?.CheckLevelComplete();
         }
 
         // kırılmaz bloklara yanlışlıkla düşmesin diye:
@@ -142,6 +145,7 @@ public class BlockHealth : MonoBehaviour
 
         // 5. AŞAMA: Patlama efektinin tamamen bitmesi için kalan süreyi bekle ve objeyi yok et
         yield return new WaitForSeconds(0.15f);
+        
         Destroy(gameObject); 
     }
 

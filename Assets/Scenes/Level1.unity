@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 0
@@ -207,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -245,6 +253,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -263,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.4034
+      value: 4.2958
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -300,6 +312,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -342,6 +358,10 @@ PrefabInstance:
     - target: {fileID: 3893764544062678147, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_BodyType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: powerUpH
@@ -449,6 +469,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -467,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.524
+      value: 7.67
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -504,6 +528,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -611,6 +639,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -629,7 +661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.4479
+      value: 6.48
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -666,6 +698,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -705,6 +741,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -723,7 +763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.524
+      value: 7.67
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -760,6 +800,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -805,6 +849,7 @@ MonoBehaviour:
   currentLevel: 1
   paddle: {fileID: 0}
   ballPrefab: {fileID: 4690285576108194879, guid: bc9c3df32e24ece40b2e1914ac3575c9, type: 3}
+  blockCount: 0
   activeBalls: 0
 --- !u!4 &503905329
 Transform:
@@ -994,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -1128,9 +1177,13 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
@@ -1150,7 +1203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0625
+      value: 0.009
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1636,6 +1689,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -1746,6 +1803,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -1848,6 +1909,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -1903,6 +1968,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2101,6 +2170,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 1
@@ -2123,7 +2196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2941
+      value: 2.2727
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2164,6 +2237,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2423,6 +2500,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 1
@@ -2445,7 +2526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0302
+      value: 0.009
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2487,6 +2568,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2523,6 +2608,10 @@ PrefabInstance:
     - target: {fileID: 3893764544062678147, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_BodyType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
@@ -2635,6 +2724,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -2653,7 +2746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.4479
+      value: 6.48
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2690,6 +2783,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2736,6 +2833,10 @@ PrefabInstance:
     - target: {fileID: 3893764544062678147, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Constraints
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
@@ -2839,6 +2940,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -2857,7 +2962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.3719
+      value: 5.4471
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2894,6 +2999,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2957,6 +3066,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 1
@@ -2979,7 +3092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2619
+      value: 2.2727
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3020,6 +3133,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3105,6 +3222,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 1
@@ -3131,7 +3252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: 0.009
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3173,6 +3294,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3200,11 +3325,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3002615208130834496, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.62
+      value: 0.61935484
       objectReference: {fileID: 0}
     - target: {fileID: 3002615208130834496, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.63
+      value: 0.5892473
       objectReference: {fileID: 0}
     - target: {fileID: 3092662477640185404, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Sprite
@@ -3242,6 +3367,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 1
@@ -3264,7 +3393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0.009
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3305,6 +3434,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3363,6 +3496,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 1
@@ -3385,7 +3522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2297
+      value: 2.2727
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3427,6 +3564,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3459,6 +3600,10 @@ PrefabInstance:
     - target: {fileID: 3092662477640185404, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_SortingLayerID
       value: 2080505573
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
@@ -3516,6 +3661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3559,6 +3708,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -3577,7 +3730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4257
+      value: 5.4471
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3614,6 +3767,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3652,6 +3809,10 @@ PrefabInstance:
     - target: {fileID: 3092662477640185404, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_SortingLayerID
       value: 2080505573
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
@@ -3709,6 +3870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3754,6 +3919,10 @@ PrefabInstance:
     - target: {fileID: 3893764544062678147, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
@@ -3877,6 +4046,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: powerUpH
       value: 
@@ -3959,50 +4132,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
   m_PrefabInstance: {fileID: 1721653610}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1794908573
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1794908575}
-  - component: {fileID: 1794908574}
-  m_Layer: 0
-  m_Name: HighScoreManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1794908574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794908573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bbf3b1d8956f5b4988b7ca62b49d9a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HighScoreManager
---- !u!4 &1794908575
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794908573}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.16483, y: 0.78939, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1814511878
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,6 +4590,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: canMove
       value: 1
@@ -4483,7 +4616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2619
+      value: 2.2727
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4525,6 +4658,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4565,6 +4702,10 @@ PrefabInstance:
     - target: {fileID: 3893764544062678147, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
@@ -4668,6 +4809,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -4686,7 +4831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.5557
+      value: 6.48
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4723,6 +4868,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4858,6 +5007,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -4960,6 +5113,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -4978,7 +5135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.2634
+      value: 4.2958
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5015,6 +5172,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5054,6 +5215,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2080505573
       objectReference: {fileID: 0}
+    - target: {fileID: 6019941499976516169, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8476244876440178642, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: isIndestructible
       value: 0
@@ -5072,7 +5237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.415
+      value: 5.4471
       objectReference: {fileID: 0}
     - target: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5109,6 +5274,10 @@ PrefabInstance:
     - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
       propertyPath: m_Name
       value: Brick (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5228,5 +5397,4 @@ SceneRoots:
   - {fileID: 503905329}
   - {fileID: 4326637391883815883}
   - {fileID: 1930085938}
-  - {fileID: 1794908575}
   - {fileID: 745359222}

@@ -1670,10 +1670,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 401651916}
     m_Modifications:
+    - target: {fileID: 1001000492508443813, guid: f7a709c605752ec44a5738b5ecc0e4d8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.0038961
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001000492508443813, guid: f7a709c605752ec44a5738b5ecc0e4d8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.8974026
+      objectReference: {fileID: 0}
     - target: {fileID: 1101404705314413865, guid: f7a709c605752ec44a5738b5ecc0e4d8, type: 3}
       propertyPath: isIndestructible
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1368328145048471951, guid: f7a709c605752ec44a5738b5ecc0e4d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7785480676998306831, guid: 9d202d01eae8426429a8ae59579e612e, type: 3}
     - target: {fileID: 1368328145048471951, guid: f7a709c605752ec44a5738b5ecc0e4d8, type: 3}
       propertyPath: m_Color.b
       value: 0.8274511
@@ -1742,7 +1754,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Iron
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5956803033611075986, guid: f7a709c605752ec44a5738b5ecc0e4d8, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1101404705314413865, guid: f7a709c605752ec44a5738b5ecc0e4d8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3107,6 +3124,7 @@ MonoBehaviour:
   currentLevel: 1
   paddle: {fileID: 0}
   ballPrefab: {fileID: 4690285576108194879, guid: bc9c3df32e24ece40b2e1914ac3575c9, type: 3}
+  blockCount: 0
   activeBalls: 0
 --- !u!4 &971220970
 Transform:

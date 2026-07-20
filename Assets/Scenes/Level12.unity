@@ -349,10 +349,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (22)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6054829064126588948, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1968525499}
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1968525503}
   m_SourcePrefab: {fileID: 100100000, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
 --- !u!1001 &96483884
 PrefabInstance:
@@ -586,10 +593,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (23)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6054829064126588948, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 808413267}
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 808413271}
   m_SourcePrefab: {fileID: 100100000, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
 --- !u!4 &208347759 stripped
 Transform:
@@ -610,6 +624,16 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
   m_PrefabInstance: {fileID: 497891906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &326427667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+  m_PrefabInstance: {fileID: 784741279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &365677340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+  m_PrefabInstance: {fileID: 1964503569}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &370407649 stripped
 Transform:
@@ -1011,10 +1035,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (21)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6054829064126588948, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1472014141}
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1472014145}
   m_SourcePrefab: {fileID: 100100000, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
 --- !u!1001 &455452186
 PrefabInstance:
@@ -1381,6 +1412,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1715135042556045505, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
   m_PrefabInstance: {fileID: 784741279}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &628003764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326427667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: 1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
+--- !u!50 &628003768
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326427667}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &712478160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
@@ -1535,10 +1615,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (25)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6054829064126588948, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 628003764}
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 628003768}
   m_SourcePrefab: {fileID: 100100000, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
 --- !u!1001 &797226015
 PrefabInstance:
@@ -1670,6 +1757,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f9542917a88024d9c7483addf08e8a, type: 3}
+--- !u!1 &808413266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+  m_PrefabInstance: {fileID: 184549619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &808413267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808413266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: -1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
+--- !u!50 &808413271
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808413266}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &809719206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2065,6 +2206,7 @@ MonoBehaviour:
   currentLevel: 1
   paddle: {fileID: 0}
   ballPrefab: {fileID: 4690285576108194879, guid: bc9c3df32e24ece40b2e1914ac3575c9, type: 3}
+  blockCount: 0
   activeBalls: 0
 --- !u!4 &971220970
 Transform:
@@ -2385,6 +2527,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+--- !u!1 &1096841861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+  m_PrefabInstance: {fileID: 1411866839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1096841862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096841861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: -1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
+--- !u!50 &1096841866
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096841861}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1131687925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,11 +2842,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (24)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6054829064126588948, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1096841862}
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1096841866}
   m_SourcePrefab: {fileID: 100100000, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+--- !u!1 &1472014140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+  m_PrefabInstance: {fileID: 442046549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1472014141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472014140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: -1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
+--- !u!50 &1472014145
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472014140}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &1480269743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
@@ -2970,6 +3227,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+--- !u!1 &1667044152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+  m_PrefabInstance: {fileID: 85760418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1690526908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3160,6 +3422,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1715135042556045505, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
   m_PrefabInstance: {fileID: 1964503569}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1910149138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365677340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: 1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
+--- !u!50 &1910149142
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365677340}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1964503569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3236,16 +3547,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick (14)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6054829064126588948, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1910149138}
+    - targetCorrespondingSourceObject: {fileID: 6243685152378895604, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1910149142}
   m_SourcePrefab: {fileID: 100100000, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
 --- !u!4 &1968525498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1715135042556045505, guid: 575198800fd082d4288d4d3a070a72a1, type: 3}
   m_PrefabInstance: {fileID: 85760418}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1968525499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667044152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: 1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
+--- !u!50 &1968525503
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667044152}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2048422760
 GameObject:
   m_ObjectHideFlags: 0

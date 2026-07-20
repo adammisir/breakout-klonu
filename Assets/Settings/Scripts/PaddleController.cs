@@ -109,34 +109,43 @@ public class PaddleController : MonoBehaviour
 
         // Patlama efekti
         // Patlama efekti
-        // Patlama efekti
         if (explosionPrefab != null)
         {
             float paddleWidth = sr.bounds.size.x;
             float halfWidth = paddleWidth / 2f;
 
-            // Geniþliðe göre patlama sayýsýný belirliyoruz (Büyükte daha çok, küçükte daha az)
+            // Geniþliðe göre tek bir katmandaki patlama sayýsý
             int count = Mathf.RoundToInt(paddleWidth * 5f);
-            count = Mathf.Clamp(count, 3, 10); // En az 3, en fazla 10 patlama
+            count = Mathf.Clamp(count, 3, 10);
 
-            for (int i = 0; i < count; i++)
+            // Eðer raket BÜYÜK ise 2 katman (alt ve üst), diðer durumlarda tek katman yapýyoruz
+            int layerCount = (currentSize == PaddleSize.Big) ? 2 : 1;
+
+            for (int layer = 0; layer < layerCount; layer++)
             {
-                // Patlamalarý soldan saða eþit þekilde daðýtýyoruz (Linear Interpolation)
-                // t deðeri 0 (en sol) ile 1 (en sað) arasýnda deðiþir
-                float t = (count > 1) ? (float)i / (count - 1) : 0.5f;
+                // Ýki katman varsa: Ýlk katmaný biraz aþaðýda (-0.1f), ikinci katmaný biraz yukarýda (+0.1f) yap
+                // Tek katman varsa tam ortada (0f) yap
+                float yOffsetLayer = 0f;
+                if (layerCount > 1)
+                {
+                    yOffsetLayer = (layer == 0) ? -0.4f : 0.1f;
+                }
 
-                // Sol uçtan sað uca X noktasýný hesapla
-                float xOffset = Mathf.Lerp(-halfWidth, halfWidth, t);
+                for (int i = 0; i < count; i++)
+                {
+                    // Soldan saða daðýlým oraný (0 ile 1 arasý)
+                    float t = (count > 1) ? (float)i / (count - 1) : 0.5f;
+                    float xOffset = Mathf.Lerp(-halfWidth, halfWidth, t);
 
-                // Kusursuz robotik bir çizgi gibi durmasýn diye çok hafif doðal bir sapma (jitter) ekliyoruz
-                // Ama bu sapma raketin dýþýna taþmayacak kadar küçük (X için max 0.05, Y için max 0.1)
-                float randomX = Random.Range(-0.05f, 0.05f);
-                float randomY = Random.Range(-0.08f, 0.08f);
+                    // Doðal durmasý için küçük rastgele sapmalar (jitter)
+                    float randomX = Random.Range(-0.05f, 0.05f);
+                    float randomY = Random.Range(-0.05f, 0.05f);
 
-                Vector3 offset = new Vector3(xOffset + randomX, randomY, 0f);
+                    // Katman yüksekliðini ve rastgeleliði birleþtiriyoruz
+                    Vector3 offset = new Vector3(xOffset + randomX, yOffsetLayer + randomY, 0f);
 
-                // Efekti raketin tam üzerine yerleþtiriyoruz
-                Instantiate(explosionPrefab, transform.position + offset, Quaternion.identity);
+                    Instantiate(explosionPrefab, transform.position + offset, Quaternion.identity);
+                }
             }
         }
 

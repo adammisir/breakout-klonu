@@ -576,6 +576,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 580365932460658409, guid: 7c0193e4ee6db614299e695fed2e3117, type: 3}
   m_PrefabInstance: {fileID: 138118145}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &161931611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+  m_PrefabInstance: {fileID: 442027905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &230560286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1213,16 +1218,42 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Iron
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 442027907}
   m_SourcePrefab: {fileID: 100100000, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
 --- !u!4 &442027906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
   m_PrefabInstance: {fileID: 442027905}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &442027907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161931611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: 1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
 --- !u!1001 &458883810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1550,6 +1581,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 580365932460658409, guid: 7c0193e4ee6db614299e695fed2e3117, type: 3}
   m_PrefabInstance: {fileID: 572460715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &616192068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+  m_PrefabInstance: {fileID: 1690469908}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &655032270
 PrefabInstance:
@@ -2546,6 +2582,7 @@ MonoBehaviour:
   currentLevel: 1
   paddle: {fileID: 0}
   ballPrefab: {fileID: 4690285576108194879, guid: bc9c3df32e24ece40b2e1914ac3575c9, type: 3}
+  blockCount: 0
   activeBalls: 0
 --- !u!4 &971220970
 Transform:
@@ -4993,16 +5030,42 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Iron
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8159041029716413324, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8675186254154177489, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1690469910}
   m_SourcePrefab: {fileID: 100100000, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
 --- !u!4 &1690469909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572831308287026942, guid: befcfa0ecbe34134e9a85111b1d76d5b, type: 3}
   m_PrefabInstance: {fileID: 1690469908}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1690469910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616192068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f67b5c6d84bcc543a0550c7cf84c68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mov
+  speed: 2
+  canMove: 1
+  defaultDirection: -1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDistance: 0.1
 --- !u!1001 &1715983628
 PrefabInstance:
   m_ObjectHideFlags: 0

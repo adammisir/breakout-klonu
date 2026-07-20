@@ -487,7 +487,7 @@ MonoBehaviour:
     m_Bits: 128
   wallLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   checkDistance: 0.1
 --- !u!4 &394650573 stripped
 Transform:
@@ -1794,6 +1794,7 @@ MonoBehaviour:
   currentLevel: 1
   paddle: {fileID: 0}
   ballPrefab: {fileID: 4690285576108194879, guid: bc9c3df32e24ece40b2e1914ac3575c9, type: 3}
+  blockCount: 0
   activeBalls: 0
 --- !u!4 &971220970
 Transform:
@@ -2818,7 +2819,7 @@ MonoBehaviour:
     m_Bits: 128
   wallLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   checkDistance: 0.1
 --- !u!4 &1258029092 stripped
 Transform:
@@ -2927,7 +2928,7 @@ MonoBehaviour:
     m_Bits: 128
   wallLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   checkDistance: 0.1
 --- !u!1001 &1320456988
 PrefabInstance:
@@ -3113,7 +3114,7 @@ MonoBehaviour:
     m_Bits: 128
   wallLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   checkDistance: 0.1
 --- !u!4 &1441392601 stripped
 Transform:
@@ -3602,7 +3603,7 @@ MonoBehaviour:
     m_Bits: 128
   wallLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   checkDistance: 0.1
 --- !u!1001 &1779901082
 PrefabInstance:
@@ -3966,7 +3967,7 @@ MonoBehaviour:
     m_Bits: 128
   wallLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   checkDistance: 0.1
 --- !u!1001 &1986170476
 PrefabInstance:

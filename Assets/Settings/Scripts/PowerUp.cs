@@ -64,7 +64,12 @@ public class PowerUp : MonoBehaviour
                 GameManager.instance?.AddScore(100);
                 PortalWall.Activate();
             }
-
+            else if (type == 'X')
+            {
+                GameManager.instance?.AddScore(100);
+                foreach (BallController ball in FindObjectsByType<BallController>())
+                    ball.SplitBall();
+            }
             Destroy(gameObject);
         }
         else if (collision.CompareTag("DeathZone"))
@@ -72,7 +77,6 @@ public class PowerUp : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     // Meteor spawn fonksiyonu: paddle transformunu alır ve üstünden spawn eder
     void SpawnMeteorAtPaddle(Transform paddleTransform)
     {

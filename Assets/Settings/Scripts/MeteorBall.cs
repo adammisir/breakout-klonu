@@ -7,10 +7,12 @@ public class MeteorBall : MonoBehaviour
     public GameObject normalBallPrefab;
 
     private Rigidbody2D rb;
-    private bool transforming = false;
+    //private bool transforming = false;
 
+    private float lastTeleportTime = 0f;
+    private float teleportCooldown = 0.2f;
 
-
+    [SerializeField] private Transform trailBall;
 
     void Start()
     {
@@ -21,15 +23,24 @@ public class MeteorBall : MonoBehaviour
 
         Invoke(nameof(TransformToNormalBall), lifetime);
 
-        GameManager.instance.activeBalls++;
+        GameManager.instance.RegisterBall();
+    }
+
+    void LateUpdate()
+    {
+        if (rb == null) return;
+
+        Vector2 dir = rb.linearVelocity.normalized;
+
+        trailBall.localPosition = -dir * 0.7f;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        // Her türlü blok yok edilir — indestructible fark etmez
+        
         if (col.CompareTag("Block"))
         {
-            //Destroy(col.gameObject);
+            
             GameManager.instance?.AddScore(100);
             return;
         }
@@ -47,8 +58,45 @@ public class MeteorBall : MonoBehaviour
         }
 
         // Sol - sağ duvar
-        if (col.CompareTag("SideWall"))
+       if (col.CompareTag("SideWall"))
         {
+            // Eğer portal aktifse ve cooldown süresi geçmişse ışınla
+            if (PortalWall.isActive)
+            {
+                if (Time.time - lastTeleportTime < teleportCooldown) return;
+
+                PortalWall hitWall = col.gameObject.GetComponent<PortalWall>();
+                if (hitWall != null)
+                {
+                    float newX;
+
+                    // Sol duvara çarptıysak -> Sağ duvara ışınla
+                    if (hitWall.isLeftWall && PortalWall.rightWall != null)
+                    {
+                        Collider2D rightCol = PortalWall.rightWall.GetComponent<Collider2D>();
+                        newX = rightCol.bounds.min.x - 0.5f; // Sağ duvarın solundan içeriye ofset
+                    }
+                    // Sağ duvara çarptıysak -> Sol duvara ışınla
+                    else if (!hitWall.isLeftWall && PortalWall.leftWall != null)
+                    {
+                        Collider2D leftCol = PortalWall.leftWall.GetComponent<Collider2D>();
+                        newX = leftCol.bounds.max.x + 0.5f; // Sol duvarın sağından içeriye ofset
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    // Işınlanma zamanını kaydet
+                    lastTeleportTime = Time.time;
+
+                    // Meteor topunu yeni pozisyona aktar (hızını ve yönünü bozmadan)
+                    transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+                    return;
+                }
+            }
+
+            // Portal aktif değilse normal sekme davranışı
             rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
             return;
         }
@@ -70,38 +118,42 @@ public class MeteorBall : MonoBehaviour
     }
 
 
+
     void TransformToNormalBall()
     {
         GameManager.instance.activeBalls--;
 
         Vector3 center = transform.position;
 
-        float spawnOffset = 0.25f;
+       // float spawnOffset = 0.7f;
 
         float currentSpeed = rb.linearVelocity.magnitude;
 
         Vector2[] directions =
         {
-        new Vector2(-0.6f, 1f).normalized, // ↖
+        new Vector2(-1.7f, 1f).normalized, // ↖
         Vector2.up,                         // ↑
-        new Vector2(0.6f, 1f).normalized    // ↗
+        new Vector2(1.7f, 1f).normalized    // ↗
         };
 
 
 
         for (int i = 0; i < 3; i++)
         {
-            float xOffset = (i - 1) * spawnOffset;
-            Vector3 spawnPos = center + new Vector3(xOffset, 0f, 0f);
+            Vector2[] spawnOffsets =
+            {
+             new Vector2(-1.5f, 0.9f),
+             new Vector2( 0f, 1f),
+             new Vector2( 1.5f, 0.9f)
+            };
+
+            Vector3 spawnPos = center + (Vector3)spawnOffsets[i];
 
             GameObject newBall = Instantiate(normalBallPrefab, spawnPos, Quaternion.identity);
             BallController bc = newBall.GetComponent<BallController>();
 
             bc.SetDirectionAndSpeed(directions[i], currentSpeed);
         }
-
-
-
 
         Destroy(gameObject);
     }

@@ -191,14 +191,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIndestructible: 0
-  powerUpF: {fileID: 2596423461672533984, guid: 7519b7672165794459fddfb17ee7a6ae, type: 3}
-  powerUpB: {fileID: 2596423461672533984, guid: 86421864a72941841bf8c9ed514c21aa, type: 3}
-  powerUpS: {fileID: 2596423461672533984, guid: 01dba298e13377f469316a71447df033, type: 3}
-  powerUpG: {fileID: 2596423461672533984, guid: 3ec96e87587b31f41b20a5a1b0ee72d8, type: 3}
-  powerUpT: {fileID: 2596423461672533984, guid: 2144cab70c7807149aefca52f34c8679, type: 3}
-  powerUpH: {fileID: 2596423461672533984, guid: 983268efcdb810340ae72d4fbd983c0a, type: 3}
-  powerUpM: {fileID: 2596423461672533984, guid: a3fab2e74807b3d4ca30dec63f0f005e, type: 3}
-  dropChance: 0.5
+  globalDropChance: 0.3
+  powerUps:
+  - prefab: {fileID: 2596423461672533984, guid: 2144cab70c7807149aefca52f34c8679, type: 3}
+    weight: 4
+  - prefab: {fileID: 2596423461672533984, guid: 86421864a72941841bf8c9ed514c21aa, type: 3}
+    weight: 4
+  - prefab: {fileID: 2596423461672533984, guid: 7519b7672165794459fddfb17ee7a6ae, type: 3}
+    weight: 3.5
+  - prefab: {fileID: 2596423461672533984, guid: 3ec96e87587b31f41b20a5a1b0ee72d8, type: 3}
+    weight: 4
+  - prefab: {fileID: 2596423461672533984, guid: 983268efcdb810340ae72d4fbd983c0a, type: 3}
+    weight: 2
+  - prefab: {fileID: 2596423461672533984, guid: a3fab2e74807b3d4ca30dec63f0f005e, type: 3}
+    weight: 4
+  - prefab: {fileID: 2596423461672533984, guid: 035df20e2c2855e45a2e60e04b003433, type: 3}
+    weight: 2
+  - prefab: {fileID: 2596423461672533984, guid: 01dba298e13377f469316a71447df033, type: 3}
+    weight: 3.5
+  - prefab: {fileID: 8042340271453212894, guid: 608c78ad71afba34f87268145ad0aeb9, type: 3}
+    weight: 2
   explosionPrefab: {fileID: 486442682533636230, guid: 77333e3fb0b81794ca7c5f17ec6c18c0, type: 3}
   IndestructibleSprite: {fileID: 7785480676998306831, guid: 9d202d01eae8426429a8ae59579e612e, type: 3}
 --- !u!114 &5956803033611075986

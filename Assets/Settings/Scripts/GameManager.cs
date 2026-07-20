@@ -20,7 +20,10 @@ public class GameManager : MonoBehaviour
     //private bool gameOverTextCached = false;
     public Transform paddle;
     public GameObject ballPrefab;
-   
+
+    private bool isLoadingLevel = false;
+
+    public int blockCount = 0;
     public int activeBalls = 0;
 
     void Awake()
@@ -52,6 +55,9 @@ public class GameManager : MonoBehaviour
         FindSceneObjects();
         UpdateUI();
         SpawnBallIfNone();
+
+        isLoadingLevel = false;
+        blockCount = 0;
 
         if (gameOverText != null)
             return;
@@ -87,7 +93,7 @@ public class GameManager : MonoBehaviour
             }
         }
             StartCoroutine(ShowLevelText());
-
+       
     }
 
     // O sahnedeki UI objelerini otomatik bulur
@@ -176,12 +182,12 @@ public class GameManager : MonoBehaviour
     // ---------------------- LEVEL MANAGEMENT ----------------------
     void Update()
     {
-        int blocks = GameObject.FindGameObjectsWithTag("Block").Length;
+    //    int blocks = GameObject.FindGameObjectsWithTag("Block").Length;
 
-        if (blocks == 0)
-        {
-            LoadNextLevel();
-        }
+    //    if (blocks == 0)
+    //    {
+    //        LoadNextLevel();
+    //    }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -191,9 +197,21 @@ public class GameManager : MonoBehaviour
 
         
     }
-
+    public void RegisterBlock() => blockCount++;
+    public void CheckLevelComplete()
+    {
+        UnregisterBlock();
+    }
+    public void UnregisterBlock()
+    {
+        blockCount--;
+        if (blockCount <= 0) LoadNextLevel();
+    }
     void LoadNextLevel()
     {
+        if (isLoadingLevel) return; // zaten yükleniyorsa atla
+        isLoadingLevel = true;
+
         currentLevel++;
         GameManager.instance.ResetBallsForNewLevel();
         
@@ -209,7 +227,7 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("Tüm seviyeler bitti.");
             HighScoreManager.instance.AddScore(currentScore);
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene("Level1");
         }
     }
 
@@ -262,6 +280,7 @@ public class GameManager : MonoBehaviour
         currentLives = 5;
         currentScore = 0;
         currentLevel = 1;
+        blockCount = 0;
     }
 
     // ---------------------- UI ----------------------

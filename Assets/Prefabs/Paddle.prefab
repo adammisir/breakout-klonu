@@ -196,7 +196,7 @@ MonoBehaviour:
   isTurret: 0
   fireRate: 0.25
   normalSprite: {fileID: 3306534392501645161, guid: 9237db16ce7e5774bb71e41cdbed5f52, type: 3}
-  turretSprite: {fileID: -6097418903552343063, guid: e60bac54d726b0d43878267e2cb6243a, type: 3}
+  turretSprite: {fileID: 1785414105149673601, guid: fc154e2bd678b0c42a98c80a03c2900a, type: 3}
   bulletPrefab: {fileID: 1362425441172493445, guid: 3e59908804ef8ce489ceceec52e5812e, type: 3}
   leftGun: {fileID: 6283867236804230491}
   rightGun: {fileID: 287589980526137908}
