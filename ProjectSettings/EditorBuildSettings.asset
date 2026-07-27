@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelectScene.unity
     guid: c460b741f6826d84d97433fff5873414
   - enabled: 1
-    path: Assets/Scenes/Win.unity
-    guid: 653c3a21c762c17498168b07c50639af
-  - enabled: 1
     path: Assets/Scenes/zHighScore.unity
     guid: c556f36fab73bde479cfe1b8b1f49720
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 653c3a21c762c17498168b07c50639af
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02

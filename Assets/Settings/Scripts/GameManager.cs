@@ -59,16 +59,14 @@ public class GameManager : MonoBehaviour
         isLoadingLevel = false;
         blockCount = 0;
 
-        if (gameOverText != null)
-            return;
-
-        GameObject go = GameObject.Find("GameOver_text");
-
-        if (go != null)
+        if (gameOverText == null)
         {
-            gameOverText = go.GetComponent<TextMeshProUGUI>();
-            gameOverText.gameObject.SetActive(false);
-            //Debug.Log("GameOverText bulundu ve kapatıldı");
+            GameObject go = GameObject.Find("GameOver_text");
+            if (go != null)
+            {
+                gameOverText = go.GetComponent<TextMeshProUGUI>();
+                gameOverText.gameObject.SetActive(false);
+            }
         }
         else
         {
